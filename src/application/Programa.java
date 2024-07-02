@@ -1,6 +1,7 @@
 package application;
 
 import tabuleiro.Posicao;
+import tabuleiro.Tabuleiro;
 
 public class Programa {
 
@@ -8,8 +9,9 @@ public class Programa {
 		// TODO Auto-generated method stub
 
 	Posicao pos = new Posicao(3, 5);
+	Tabuleiro tabuleiro = new Tabuleiro(8, 8);
 	System.out.println(pos);
-	
+	System.out.println(tabuleiro);
 	
 	
 	
