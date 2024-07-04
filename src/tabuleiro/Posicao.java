@@ -31,7 +31,6 @@ public class Posicao {
 		return "LINHA: " + linha + "\nCOLUNA: " + coluna; 
 	}
 	
-	
 	public void setValor (int linha, int coluna) {
 		
 	}
