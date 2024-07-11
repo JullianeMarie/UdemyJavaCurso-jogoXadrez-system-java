@@ -19,10 +19,10 @@ public class PartidaXadrez {
 	}
 
 	public PecaXadrez[][] getPecas() {
-		PecaXadrez[][] mat = new PecaXadrez[tabuleiro.getLinha()][tabuleiro.getColuna()];
-		for (int i = 0; i < tabuleiro.getLinha(); i++) {
-			for (int j = 0; j < tabuleiro.getColuna(); j++) {
-				mat[i][j] = (PecaXadrez) tabuleiro.pecas(i, j);
+		PecaXadrez[][] mat = new PecaXadrez[tabuleiro.getLinhas()][tabuleiro.getColunas()];
+		for (int i = 0; i < tabuleiro.getLinhas(); i++) {
+			for (int j = 0; j < tabuleiro.getColunas(); j++) {
+				mat[i][j] = (PecaXadrez) tabuleiro.peca(i, j);
 			}
 		}
 		return mat;
@@ -47,7 +47,7 @@ public class PartidaXadrez {
 		tabuleiro.localPeca(new Peao(tabuleiro, CorPeca.PRETA), new Posicao (1, 7));
 		
 		
-		tabuleiro.localPeca(new Torre(tabuleiro, CorPeca.BRANCA), new Posicao (7, 0));
+		tabuleiro.localPeca(new Torre(tabuleiro, CorPeca.BRANCA), new Posicao (7, 1));
 		tabuleiro.localPeca(new Cavalo(tabuleiro, CorPeca.BRANCA), new Posicao (7,1));
 		tabuleiro.localPeca(new Bispo(tabuleiro, CorPeca.BRANCA), new Posicao (7, 2));
 		tabuleiro.localPeca(new Rainha(tabuleiro, CorPeca.BRANCA), new Posicao (7, 3));

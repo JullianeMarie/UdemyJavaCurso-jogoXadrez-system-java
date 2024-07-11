@@ -2,42 +2,61 @@ package tabuleiro;
 
 public class Tabuleiro {
 
-	private int linha;
-	private int coluna;
+	private int linhas;
+	private int colunas;
 	private Peca[][] pecas;
 
-	public Tabuleiro(int linha, int coluna) {
-		this.linha = linha;
-		this.coluna = coluna;
-		pecas = new Peca[linha][coluna];
+	public Tabuleiro(int linhas, int colunas) {
+		if (linhas < 1 || colunas < 1) {
+			throw new TabuleiroException("Erro ao criar tabuleiro: precisa ter 1 linha e 1 coluna");
+		}
+		this.linhas = linhas;
+		this.colunas = colunas;
+		pecas = new Peca[linhas][colunas];
 	}
 
-	public int getLinha() {
-		return linha;
+	public int getLinhas() {
+		return linhas;
 	}
 
-	public void setLinha(int linha) {
-		this.linha = linha;
+	public int getColunas() {
+		return colunas;
 	}
 
-	public int getColuna() {
-		return coluna;
+	public Peca peca(int linha, int coluna) {
+		if (!posicaoExiste(linha, coluna)) {
+			throw new TabuleiroException("Não há essa posição no tabuleiro");
+		}
+		return pecas[linhas][colunas];
 	}
 
-	public void setColuna(int coluna) {
-		this.coluna = coluna;
+	public Peca peca(Posicao posicao) {
+		if (!posicaoExiste(posicao)) {
+			throw new TabuleiroException("Não há essa posição no tabuleiro");
+		}
+		return pecas[posicao.getLinha()][posicao.getColuna()];
 	}
-	
-	public Peca pecas(int linha, int coluna) {
-		return pecas [linha][coluna];
-	}
-	
-	public Peca pecas(Posicao posicao) {
-		return pecas[posicao.getLinha()] [posicao.getColuna()];
-	}	
-	
+
 	public void localPeca(Peca peca, Posicao posicao) {
+		if (pecaExiste(posicao)) {
+			throw new TabuleiroException("Já existe uma peça na posição: " + posicao);
+		}
 		pecas[posicao.getLinha()][posicao.getColuna()] = peca;
 		peca.posicao = posicao;
+	}
+
+	private boolean posicaoExiste(int linha, int coluna) {
+		return linha >= 0 && linha < linhas && coluna >= 0 && coluna < colunas;
+	}
+
+	public boolean posicaoExiste(Posicao posicao) {
+		return posicaoExiste(posicao.getLinha(), posicao.getColuna());
+	}
+
+	public boolean pecaExiste(Posicao posicao) {
+		if (!posicaoExiste(posicao)) {
+			throw new TabuleiroException("Não há essa posição no tabuleiro");
+		}
+		return peca(posicao) != null;
 	}
 }
