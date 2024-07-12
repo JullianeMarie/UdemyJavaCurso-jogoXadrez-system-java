@@ -1,6 +1,5 @@
 package xadrez;
 
-import tabuleiro.Posicao;
 import tabuleiro.Tabuleiro;
 import xadrez.pecas.Bispo;
 import xadrez.pecas.Cavalo;
@@ -28,41 +27,45 @@ public class PartidaXadrez {
 		return mat;
 	}
 
+	private void localNovaPeca(char coluna, int linha, PecaXadrez peca ) {
+		tabuleiro.localPeca(peca, new XadrezPosicao(coluna, linha).paraPosicao());
+	}
+	
 	public void inicioPartida() {
-		tabuleiro.localPeca(new Torre(tabuleiro, CorPeca.PRETA), new Posicao (0, 0));
-		tabuleiro.localPeca(new Cavalo(tabuleiro, CorPeca.PRETA), new Posicao (0, 1));
-		tabuleiro.localPeca(new Bispo(tabuleiro, CorPeca.PRETA), new Posicao (0, 2));
-		tabuleiro.localPeca(new Rainha(tabuleiro, CorPeca.PRETA), new Posicao (0, 3));
-		tabuleiro.localPeca(new Rei(tabuleiro, CorPeca.PRETA), new Posicao (0, 4));
-		tabuleiro.localPeca(new Bispo(tabuleiro, CorPeca.PRETA), new Posicao (0, 5));
-		tabuleiro.localPeca(new Cavalo(tabuleiro, CorPeca.PRETA), new Posicao (0, 6));
-		tabuleiro.localPeca(new Torre(tabuleiro, CorPeca.PRETA), new Posicao (0, 7));
-		tabuleiro.localPeca(new Peao(tabuleiro, CorPeca.PRETA), new Posicao (1, 0));
-		tabuleiro.localPeca(new Peao(tabuleiro, CorPeca.PRETA), new Posicao (1, 1));
-		tabuleiro.localPeca(new Peao(tabuleiro, CorPeca.PRETA), new Posicao (1, 2));
-		tabuleiro.localPeca(new Peao(tabuleiro, CorPeca.PRETA), new Posicao (1, 3));
-		tabuleiro.localPeca(new Peao(tabuleiro, CorPeca.PRETA), new Posicao (1, 4));
-		tabuleiro.localPeca(new Peao(tabuleiro, CorPeca.PRETA), new Posicao (1, 5));
-		tabuleiro.localPeca(new Peao(tabuleiro, CorPeca.PRETA), new Posicao (1, 6));
-		tabuleiro.localPeca(new Peao(tabuleiro, CorPeca.PRETA), new Posicao (1, 7));
+		localNovaPeca('a', 8, new Torre(tabuleiro, CorPeca.PRETA));
+		localNovaPeca('b', 8, new Cavalo(tabuleiro, CorPeca.PRETA));
+		localNovaPeca('c', 8, new Bispo(tabuleiro, CorPeca.PRETA));
+		localNovaPeca('d', 8, new Rainha(tabuleiro, CorPeca.PRETA));
+		localNovaPeca('e', 8, new Rei(tabuleiro, CorPeca.PRETA));
+		localNovaPeca('f', 8, new Bispo(tabuleiro, CorPeca.PRETA));
+		localNovaPeca('g', 8, new Cavalo(tabuleiro, CorPeca.PRETA));
+		localNovaPeca('h', 8, new Torre(tabuleiro, CorPeca.PRETA));
+		localNovaPeca('a', 7, new Peao(tabuleiro, CorPeca.PRETA));
+		localNovaPeca('b', 7, new Peao(tabuleiro, CorPeca.PRETA));
+		localNovaPeca('c', 7, new Peao(tabuleiro, CorPeca.PRETA));
+		localNovaPeca('d', 7, new Peao(tabuleiro, CorPeca.PRETA));
+		localNovaPeca('e', 7, new Peao(tabuleiro, CorPeca.PRETA));
+		localNovaPeca('f', 7, new Peao(tabuleiro, CorPeca.PRETA));
+		localNovaPeca('g', 7, new Peao(tabuleiro, CorPeca.PRETA));
+		localNovaPeca('h', 7, new Peao(tabuleiro, CorPeca.PRETA));
 		
 		
-		tabuleiro.localPeca(new Torre(tabuleiro, CorPeca.BRANCA), new Posicao (7, 1));
-		tabuleiro.localPeca(new Cavalo(tabuleiro, CorPeca.BRANCA), new Posicao (7,1));
-		tabuleiro.localPeca(new Bispo(tabuleiro, CorPeca.BRANCA), new Posicao (7, 2));
-		tabuleiro.localPeca(new Rainha(tabuleiro, CorPeca.BRANCA), new Posicao (7, 3));
-		tabuleiro.localPeca(new Rei(tabuleiro, CorPeca.BRANCA), new Posicao (7, 4));
-		tabuleiro.localPeca(new Bispo(tabuleiro, CorPeca.BRANCA), new Posicao (7, 5));
-		tabuleiro.localPeca(new Cavalo(tabuleiro, CorPeca.BRANCA), new Posicao (7, 6));
-		tabuleiro.localPeca(new Torre(tabuleiro, CorPeca.BRANCA), new Posicao (7, 7));
-		tabuleiro.localPeca(new Peao(tabuleiro, CorPeca.BRANCA), new Posicao (6, 0));
-		tabuleiro.localPeca(new Peao(tabuleiro, CorPeca.BRANCA), new Posicao (6, 1));
-		tabuleiro.localPeca(new Peao(tabuleiro, CorPeca.BRANCA), new Posicao (6, 2));
-		tabuleiro.localPeca(new Peao(tabuleiro, CorPeca.BRANCA), new Posicao (6, 3));
-		tabuleiro.localPeca(new Peao(tabuleiro, CorPeca.BRANCA), new Posicao (6, 4));
-		tabuleiro.localPeca(new Peao(tabuleiro, CorPeca.BRANCA), new Posicao (6, 5));
-		tabuleiro.localPeca(new Peao(tabuleiro, CorPeca.BRANCA), new Posicao (6, 6));
-		tabuleiro.localPeca(new Peao(tabuleiro, CorPeca.BRANCA), new Posicao (6, 7));
+		localNovaPeca('a', 1, new Torre(tabuleiro, CorPeca.BRANCA));
+		localNovaPeca('b', 1, new Cavalo(tabuleiro, CorPeca.BRANCA));
+		localNovaPeca('c', 1, new Bispo(tabuleiro, CorPeca.BRANCA));
+		localNovaPeca('d', 1, new Rainha(tabuleiro, CorPeca.BRANCA));
+		localNovaPeca('e', 1, new Rei(tabuleiro, CorPeca.BRANCA));
+		localNovaPeca('f', 1, new Bispo(tabuleiro, CorPeca.BRANCA));
+		localNovaPeca('g', 1, new Cavalo(tabuleiro, CorPeca.BRANCA));
+		localNovaPeca('h', 1, new Torre(tabuleiro, CorPeca.BRANCA));
+		localNovaPeca('a', 2, new Peao(tabuleiro, CorPeca.BRANCA));
+		localNovaPeca('b', 2, new Peao(tabuleiro, CorPeca.BRANCA));
+		localNovaPeca('c', 2, new Peao(tabuleiro, CorPeca.BRANCA));
+		localNovaPeca('d', 2, new Peao(tabuleiro, CorPeca.BRANCA));
+		localNovaPeca('e', 2, new Peao(tabuleiro, CorPeca.BRANCA));
+		localNovaPeca('f', 2, new Peao(tabuleiro, CorPeca.BRANCA));
+		localNovaPeca('g', 2, new Peao(tabuleiro, CorPeca.BRANCA));
+		localNovaPeca('h', 2, new Peao(tabuleiro, CorPeca.BRANCA));
 	
 	
 	}

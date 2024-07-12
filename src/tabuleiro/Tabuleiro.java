@@ -27,7 +27,7 @@ public class Tabuleiro {
 		if (!posicaoExiste(linha, coluna)) {
 			throw new TabuleiroException("Não há essa posição no tabuleiro");
 		}
-		return pecas[linhas][colunas];
+		return pecas[linha][coluna];
 	}
 
 	public Peca peca(Posicao posicao) {
