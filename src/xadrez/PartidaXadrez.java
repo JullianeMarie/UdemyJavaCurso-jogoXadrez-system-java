@@ -10,7 +10,7 @@ import xadrez.pecas.Torre;
 
 public class PartidaXadrez {
 
-	private Tabuleiro tabuleiro;
+	private Tabuleiro tabuleiro; 
 
 	public PartidaXadrez() {
 		tabuleiro = new Tabuleiro(8, 8);
