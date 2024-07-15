@@ -1,5 +1,7 @@
 package xadrez;
 
+import tabuleiro.Peca;
+import tabuleiro.Posicao;
 import tabuleiro.Tabuleiro;
 import xadrez.pecas.Bispo;
 import xadrez.pecas.Cavalo;
@@ -10,7 +12,7 @@ import xadrez.pecas.Torre;
 
 public class PartidaXadrez {
 
-	private Tabuleiro tabuleiro; 
+	private Tabuleiro tabuleiro;
 
 	public PartidaXadrez() {
 		tabuleiro = new Tabuleiro(8, 8);
@@ -27,10 +29,31 @@ public class PartidaXadrez {
 		return mat;
 	}
 
-	private void localNovaPeca(char coluna, int linha, PecaXadrez peca ) {
-		tabuleiro.localPeca(peca, new XadrezPosicao(coluna, linha).paraPosicao());
+	public PecaXadrez executarMovimentoXadrez(XadrezPosicao origemPosicao, XadrezPosicao destinoPosicao) {
+		Posicao origem = origemPosicao.paraPosicao();
+		Posicao destino = destinoPosicao.paraPosicao();
+		validaPosicaoOrigem(origem);
+		Peca capturaPeca = fazerMovimento(origem, destino);
+		return (PecaXadrez)capturaPeca;
+	}
+
+	private Peca fazerMovimento(Posicao origem, Posicao destino) {
+		Peca p = tabuleiro.removePeca(origem);
+		Peca capturaPeca = tabuleiro.removePeca(destino);
+		tabuleiro.localPeca(p, destino);
+		return capturaPeca;
 	}
 	
+	private void validaPosicaoOrigem( Posicao posicao) {
+		if (!tabuleiro.pecaExiste(posicao)) {
+			throw new XadrezException("Não existe peça na posição de origem");	
+		}
+	}
+
+	private void localNovaPeca(char coluna, int linha, PecaXadrez peca) {
+		tabuleiro.localPeca(peca, new XadrezPosicao(coluna, linha).paraPosicao());
+	}
+
 	public void inicioPartida() {
 		localNovaPeca('a', 8, new Torre(tabuleiro, CorPeca.PRETA));
 		localNovaPeca('b', 8, new Cavalo(tabuleiro, CorPeca.PRETA));
@@ -48,8 +71,7 @@ public class PartidaXadrez {
 		localNovaPeca('f', 7, new Peao(tabuleiro, CorPeca.PRETA));
 		localNovaPeca('g', 7, new Peao(tabuleiro, CorPeca.PRETA));
 		localNovaPeca('h', 7, new Peao(tabuleiro, CorPeca.PRETA));
-		
-		
+
 		localNovaPeca('a', 1, new Torre(tabuleiro, CorPeca.BRANCA));
 		localNovaPeca('b', 1, new Cavalo(tabuleiro, CorPeca.BRANCA));
 		localNovaPeca('c', 1, new Bispo(tabuleiro, CorPeca.BRANCA));
@@ -66,27 +88,6 @@ public class PartidaXadrez {
 		localNovaPeca('f', 2, new Peao(tabuleiro, CorPeca.BRANCA));
 		localNovaPeca('g', 2, new Peao(tabuleiro, CorPeca.BRANCA));
 		localNovaPeca('h', 2, new Peao(tabuleiro, CorPeca.BRANCA));
-	
-	
+
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
